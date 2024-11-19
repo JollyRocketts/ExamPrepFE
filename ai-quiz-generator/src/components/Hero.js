@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaYoutube, FaLink } from "react-icons/fa"; // Icons for YouTube and Hyperlink
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const [mode, setMode] = useState("youtube"); // State for toggle button
@@ -17,26 +18,37 @@ const Hero = () => {
         {/* <p className="w-2/3">Effortlessly generate quizzes and summarize text from various formats—transforming your content into engaging learning experiences</p> */}
 
         {/* 4 Upload Buttons */}
-        <p className="text-lg mt-12 pt-12 w-2/3 text-center font-bold">
+        <p className="text-xl mt-12 pt-6 pb-12 w-2/3 text-center font-bold">
           How would you like to summarize?
         </p>
         <div className="flex space-x-6 mt-6">
-          <button className="bg-white text-black font-bold py-6 px-10 rounded-xl shadow-md hover:bg-gray-200 text-lg">
-            Upload Image
-          </button>
-          <button className="bg-white text-black font-bold py-6 px-10 rounded-xl shadow-md hover:bg-gray-200 text-lg">
-            Upload PDF
-          </button>
-          <button className="bg-white text-black font-bold py-6 px-10 rounded-xl shadow-md hover:bg-gray-200 text-lg">
-            Upload PPT
-          </button>
-          <button className="bg-white text-black font-bold py-6 px-10 rounded-xl shadow-md hover:bg-gray-200 text-lg">
-            Upload DOC
-          </button>
+          <Link to="/uploadImage">
+            <button className="bg-white text-black font-bold py-6 px-10 rounded-xl shadow-md hover:bg-gray-200 text-lg">
+              Upload Image
+            </button>
+          </Link>
+          <Link to="/uploadPdf">
+            <button className="bg-white text-black font-bold py-6 px-10 rounded-xl shadow-md hover:bg-gray-200 text-lg">
+              Upload PDF
+            </button>
+          </Link>
+          <Link to="/uploadPPT">
+            <button className="bg-white text-black font-bold py-6 px-10 rounded-xl shadow-md hover:bg-gray-200 text-lg">
+              Upload PPT
+            </button>
+          </Link>
+          <Link to="/uploadDoc">
+            <button className="bg-white text-black font-bold py-6 px-10 rounded-xl shadow-md hover:bg-gray-200 text-lg">
+              Upload DOC
+            </button>
+          </Link>
         </div>
 
         {/* Link Input Bar */}
-        <div className="relative flex items-center mt-12 w-2/3" style={{ top: "40px" }} >
+        <div
+          className="relative flex items-center mt-12 w-2/3"
+          style={{ top: "40px" }}
+        >
           {/* Toggle Button */}
           <button
             onClick={toggleMode}
@@ -52,7 +64,9 @@ const Hero = () => {
           <input
             type="text"
             placeholder={
-              mode === "youtube" ? "Enter YouTube link..." : "Enter website link..."
+              mode === "youtube"
+                ? "Enter YouTube link..."
+                : "Enter website link..."
             }
             className="flex-1 py-4 px-6 rounded-r-full text-black shadow-md focus:outline-none focus:ring-2 focus:ring-orange-500"
           />

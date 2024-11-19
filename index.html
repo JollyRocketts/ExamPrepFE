@@ -1,48 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Quiz Generator</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Upload the file or Submit a Link</title>
+    <script>
+        function toggleInputFields() {
+            const imageOption = document.getElementById('imageOption').checked;
+            const pdfOption = document.getElementById('pdfOption').checked;
+            const pptOption = document.getElementById('pptOption').checked;
+            const docOption = document.getElementById('docOption').checked;
+            const linkOption = document.getElementById('linkOption').checked;
+            const videoOption = document.getElementById('videoOption').checked;
+            const quizOption = document.getElementById('quizOption').checked;
+
+            document.getElementById('imageInput').style.display = imageOption ? 'block' : 'none';
+            document.getElementById('pdfInput').style.display = pdfOption ? 'block' : 'none';
+            document.getElementById('pptInput').style.display = pptOption ? 'block' : 'none';
+            document.getElementById('docInput').style.display = docOption ? 'block' : 'none';
+            document.getElementById('linkInput').style.display = linkOption ? 'block' : 'none';
+            document.getElementById('videoInput').style.display = videoOption ? 'block' : 'none';
+            document.getElementById('txtInput').style.display = quizOption ? 'block' : 'none';
+        }
+    </script>
 </head>
 <body>
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Free AI Powered Quiz Generator</h1>
-            <p>Create quizzes from text or topics in seconds. Choose multiple-choice, true/false, or open-ended questions!</p>
-            <p class="stats">+10,000,000 Generated questions last month.</p>
+    <form action="/success" method="post" enctype="multipart/form-data">
+        <label><input type="radio" name="option" id="imageOption" value="image" onclick="toggleInputFields()" required> Upload Image</label>
+        <label><input type="radio" name="option" id="pdfOption" value="pdf" onclick="toggleInputFields()"> Upload PDF</label>
+        <label><input type="radio" name="option" id="pptOption" value="ppt" onclick="toggleInputFields()"> Upload PPT</label>
+        <label><input type="radio" name="option" id="docOption" value="doc" onclick="toggleInputFields()"> Upload DOC</label>
+        <label><input type="radio" name="option" id="linkOption" value="link" onclick="toggleInputFields()"> Submit Link</label>
+        <label><input type="radio" name="option" id="videoOption" value="video" onclick="toggleInputFields()"> YouTube Video</label>
+        <label><input type="radio" name="option" id="quizOption" value="quiz" onclick="toggleInputFields()" required>AI Quiz Generator</label>
+        
+        <div id="imageInput" style="display: none;">
+            <label for="file">Choose an image to upload:</label>
+            <input type="file" name="image" />
         </div>
-    
+        
+        <div id="pdfInput" style="display: none;">
+            <label for="pdf">Choose a PDF to upload:</label>
+            <input type="file" name="pdf" />
+        </div>
+        
+        <div id="pptInput" style="display: none;">
+            <label for="ppt">Choose a PPT to upload:</label>
+            <input type="file" name="ppt" />
+        </div>
+        
+        <div id="docInput" style="display: none;">
+            <label for="doc">Choose a DOC to upload:</label>
+            <input type="file" name="doc" />
+        </div>
+        
+        <div id="linkInput" style="display: none;">
+            <label for="link">Enter a URL:</label>
+            <input type="url" name="link" placeholder="Enter a URL" />
+        </div>
 
-    <main class="quiz-generator">
-        <div class="quiz-container">
-            <textarea placeholder="Paste or type your text here..." class="quiz-input"></textarea>
-            <div class="quiz-options">
-                <button class="option-btn">Multiple choice</button>
-                <button class="option-btn">True or false</button>
-                <button class="option-btn">Open question</button>
-                <button class="generate-btn">Generate Quiz</button>
-            </div>
+        <div id="videoInput" style="display: none;">
+            <label for="video">Enter YouTube Video URL:</label>
+            <input type="url" name="video" placeholder="Enter YouTube Video URL" />
         </div>
-    </main>
-</header>
-    <section class="collections">
-        <h2>Collections</h2>
-        <div class="collection-container">
-            <div class="collection-card">
-                <h3>My Collection</h3>
-                <p>0 questions</p>
-            </div>
-            <div class="collection-card add-collection">
-                <h3>Add New Collection</h3>
-            </div>
-        </div>
-    </section>
 
-    <footer class="history">
-        <h2>History</h2>
-        <p>All your generated questions and quizzes will appear here.</p>
-    </footer>
+        <div id="txtInput" style="display: none;">
+            <label for="quiz">Choose a TXT file to upload:</label>
+            <input type="file" name="quiz" />
+        </div>
+        
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>

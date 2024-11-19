@@ -1,15 +1,22 @@
 import React from "react";
-import Hero from "./components/Hero";
-import QuizGenerator from "./components/QuizGenerator";
-import Collections from "./components/Collections";
-import History from "./components/History";
+import Home from "./pages/Home";
+import UploadImage from "./pages/UploadImage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import UploadPDF from "./pages/UploadPDF";
+import UploadDoc from "./pages/UploadDoc";
+import UploadPPT from "./pages/UploadPPT";
 
 const App = () => {
   return (
-    <div>
-      <Hero />
-      <QuizGenerator />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/uploadImage" element={<UploadImage />} />
+        <Route path="/uploadPdf" element={<UploadPDF />} />
+        <Route path="/uploadDoc" element={<UploadDoc />} />
+        <Route path="/uploadPPT" element={<UploadPPT />} />
+      </Routes>
+    </Router>
   );
 };
 
